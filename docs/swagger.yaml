@@ -1,0 +1,105 @@
+basePath: /
+definitions:
+  domain.CreateInput:
+    properties:
+      name:
+        type: string
+      price:
+        type: integer
+    type: object
+  domain.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  domain.UpdateInput:
+    properties:
+      name:
+        type: string
+      price:
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  title: Store API
+  version: "1.0"
+paths:
+  /api/v1/products/:
+    get:
+      operationId: get-csv-products
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/domain.ErrorResponse'
+      summary: get csv
+      tags:
+      - products
+    post:
+      operationId: create-product
+      parameters:
+      - description: ' '
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/domain.CreateInput'
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/domain.ErrorResponse'
+      summary: create
+      tags:
+      - products
+  /api/v1/products/{id}:
+    delete:
+      operationId: delete-product
+      parameters:
+      - description: ' '
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/domain.ErrorResponse'
+      summary: delete
+      tags:
+      - products
+    put:
+      operationId: update-product
+      parameters:
+      - description: ' '
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: ' '
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/domain.UpdateInput'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/domain.ErrorResponse'
+      summary: update
+      tags:
+      - products
+swagger: "2.0"
