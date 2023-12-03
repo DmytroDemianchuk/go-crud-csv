@@ -24,7 +24,7 @@ DB_USER=root
 DB_HOST=pg
 
 HTTP_HOST=localhost
-HTTP_PORT=8080
+HTTP_PORT=8000
 ```
 
 Definition migrating to database
@@ -41,4 +41,4 @@ make run
 
 Swagger
 
-<a href="http://localhost:8080/swagger/index.html">http://localhost:8080/swagger/index.html</a>
+<a href="http://localhost:8000/swagger/index.html">http://localhost:8080/swagger/index.html</a>
